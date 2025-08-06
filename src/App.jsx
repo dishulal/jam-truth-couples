@@ -130,7 +130,6 @@ const decks = {
     "Tera ban jaunga, haan,\nTera ban jaunga...\n— Finish: 'Kabir Singh'",
     "Hey, I just met you, and this is crazy,\nBut here's my number, so call me maybe...\n— Finish: 'Call Me Maybe'",
     "Tere bina jee na payenge hum,\nAaja dil ko karle tu sambhal...\n— Finish: 'Agar Tum Saath Ho'",
-    // You can add more to reach 50 cards if you like
   ],
   wouldyou: [
     "Would you rather lose your voice or your hearing?",
@@ -187,18 +186,18 @@ const decks = {
 };
 
 export default function App() {
-  const [selectedDeck, setSelectedDeck] = React.useState(null);
-  const [card, setCard] = React.useState(null);
+  const [selectedDeck, setSelectedDeck] = useState(null);
+  const [card, setCard] = useState(null);
 
-  const drawCard = (deckName) => {
+  function drawCard(deckName) {
     const cards = decks[deckName];
-    let randomCard;
+    let newCard;
     do {
-      randomCard = cards[Math.floor(Math.random() * cards.length)];
-    } while (randomCard === card && cards.length > 1);
+      newCard = cards[Math.floor(Math.random() * cards.length)];
+    } while (newCard === card && cards.length > 1);
     setSelectedDeck(deckName);
-    setCard(randomCard);
-  };
+    setCard(newCard);
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-400 via-green-500 to-green-700 flex flex-col items-center justify-center p-6 text-center font-sans">
@@ -206,7 +205,7 @@ export default function App() {
         Jam & Truth for Couples 🎤💖
       </h1>
 
-      <div className="flex gap-5 mb-10 flex-wrap justify-center">
+      <div className="flex flex-wrap gap-4 mb-10 justify-center">
         {Object.entries({
           song: "Song Association",
           truth: "Truth",
@@ -216,13 +215,13 @@ export default function App() {
         }).map(([key, label]) => (
           <button
             key={key}
+            onClick={() => drawCard(key)}
             className={`px-5 py-3 rounded-lg font-semibold transition-shadow
               ${
                 selectedDeck === key
                   ? "bg-white text-green-700 shadow-lg"
                   : "bg-white/90 text-green-900 hover:shadow-md"
               }`}
-            onClick={() => drawCard(key)}
           >
             {label}
           </button>
