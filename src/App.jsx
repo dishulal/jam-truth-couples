@@ -201,42 +201,40 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-300 via-purple-300 to-blue-300 flex flex-col items-center justify-center p-6 text-center font-sans">
-      <h1 className="text-4xl font-bold mb-8">Jam & Truth for Couples</h1>
-      <div className="flex gap-4 mb-8 flex-wrap justify-center">
-        <button
-          className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition"
-          onClick={() => drawCard("song")}
-        >
-          Song Association
-        </button>
-        <button
-          className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition"
-          onClick={() => drawCard("truth")}
-        >
-          Truth
-        </button>
-        <button
-          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
-          onClick={() => drawCard("know")}
-        >
-          Know Each Other
-        </button>
-        <button
-          className="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700 transition"
-          onClick={() => drawCard("lyrics")}
-        >
-          Finish the Lyrics
-        </button>
-        <button
-          className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
-          onClick={() => drawCard("wouldyou")}
-        >
-          Would You Rather
-        </button>
+    <div className="min-h-screen bg-gradient-to-b from-pink-400 via-purple-400 to-blue-400 flex flex-col items-center justify-center p-6 text-center font-sans">
+      <h1 className="text-5xl font-extrabold mb-10 text-white drop-shadow-lg">
+        Jam & Truth for Couples 🎤💖
+      </h1>
+
+      <div className="flex gap-5 mb-10 flex-wrap justify-center">
+        {Object.entries({
+          song: "Song Association",
+          truth: "Truth",
+          know: "Know Each Other",
+          lyrics: "Finish the Lyrics",
+          wouldyou: "Would You Rather"
+        }).map(([key, label]) => (
+          <button
+            key={key}
+            className={`px-5 py-3 rounded-lg font-semibold transition-shadow
+              ${
+                selectedDeck === key
+                  ? "bg-white text-purple-700 shadow-lg"
+                  : "bg-white/90 text-purple-900 hover:shadow-md"
+              }`}
+            onClick={() => drawCard(key)}
+          >
+            {label}
+          </button>
+        ))}
       </div>
+
       {card && (
-        <div className="bg-white p-6 rounded shadow-md max-w-lg w-full text-left whitespace-pre-wrap">
+        <div
+          className="max-w-xl w-full bg-white/90 rounded-xl shadow-xl p-8 text-lg
+          font-medium leading-relaxed text-purple-900 whitespace-pre-wrap select-none
+          border-2 border-purple-600"
+        >
           {card}
         </div>
       )}
