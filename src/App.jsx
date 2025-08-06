@@ -130,7 +130,7 @@ const decks = {
     "Tera ban jaunga, haan,\nTera ban jaunga...\n— Finish: 'Kabir Singh'",
     "Hey, I just met you, and this is crazy,\nBut here's my number, so call me maybe...\n— Finish: 'Call Me Maybe'",
     "Tere bina jee na payenge hum,\nAaja dil ko karle tu sambhal...\n— Finish: 'Agar Tum Saath Ho'",
-    // Add more here to reach 50 cards total...
+    // You can add more to reach 50 cards if you like
   ],
   wouldyou: [
     "Would you rather lose your voice or your hearing?",
@@ -187,8 +187,8 @@ const decks = {
 };
 
 export default function App() {
-  const [selectedDeck, setSelectedDeck] = useState(null);
-  const [card, setCard] = useState(null);
+  const [selectedDeck, setSelectedDeck] = React.useState(null);
+  const [card, setCard] = React.useState(null);
 
   const drawCard = (deckName) => {
     const cards = decks[deckName];
@@ -201,7 +201,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-400 via-purple-400 to-blue-400 flex flex-col items-center justify-center p-6 text-center font-sans">
+    <div className="min-h-screen bg-gradient-to-b from-green-400 via-green-500 to-green-700 flex flex-col items-center justify-center p-6 text-center font-sans">
       <h1 className="text-5xl font-extrabold mb-10 text-white drop-shadow-lg">
         Jam & Truth for Couples 🎤💖
       </h1>
@@ -219,8 +219,8 @@ export default function App() {
             className={`px-5 py-3 rounded-lg font-semibold transition-shadow
               ${
                 selectedDeck === key
-                  ? "bg-white text-purple-700 shadow-lg"
-                  : "bg-white/90 text-purple-900 hover:shadow-md"
+                  ? "bg-white text-green-700 shadow-lg"
+                  : "bg-white/90 text-green-900 hover:shadow-md"
               }`}
             onClick={() => drawCard(key)}
           >
@@ -232,8 +232,8 @@ export default function App() {
       {card && (
         <div
           className="max-w-xl w-full bg-white/90 rounded-xl shadow-xl p-8 text-lg
-          font-medium leading-relaxed text-purple-900 whitespace-pre-wrap select-none
-          border-2 border-purple-600"
+          font-medium leading-relaxed text-green-900 whitespace-pre-wrap select-none
+          border-2 border-green-600"
         >
           {card}
         </div>
